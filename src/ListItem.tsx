@@ -6,5 +6,5 @@ interface ListItemProps {
 }
 
 export const ListItem: FC<ListItemProps> = memo(({ user }) => {
-  return <li>{user.name}</li>;
+  return <li>{user.username}</li>;
 });
