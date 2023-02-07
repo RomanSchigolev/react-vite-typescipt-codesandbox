@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useInput } from "./hooks/useInput";
-import { useFetchUsers } from "./hooks/useFetchUsers";
-import { List } from "./List";
-import { Button } from "./Button";
+import { useInput, useFetchUsers } from "hooks";
+import { Button, List } from "components";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
