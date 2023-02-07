@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { debounce } from "../helpers/debounce";
+import { debounce } from "helpers";
 
 export const useInput = () => {
   const [query, setQuery] = useState("");

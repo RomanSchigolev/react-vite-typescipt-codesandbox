@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from "react";
-import { ListItem } from "./ListItem";
-import { User } from "./models";
+import { ListItem } from "components";
+import { User } from "models";
 
 interface ListProps {
   users: User[];
@@ -12,7 +12,7 @@ export const List: FC<ListProps> = memo(({ users, query }) => {
     return !query
       ? users
       : users.filter((user) =>
-          user.name.toLowerCase().includes(query.toLowerCase())
+          user.username.toLowerCase().includes(query.toLowerCase())
         );
   }, [users, query]);
 

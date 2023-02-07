@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { User } from "./models";
+import { User } from "models";
 
 interface ListItemProps {
   user: User;
