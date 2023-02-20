@@ -1,0 +1,40 @@
+{
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "rules": {
+    "object-curly-spacing": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "array-bracket-spacing": ["error", "never"],
+    "quotes": ["error", "single"],
+    "no-console": ["warn", { "allow": ["error", "info"] }],
+    "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  }
+}

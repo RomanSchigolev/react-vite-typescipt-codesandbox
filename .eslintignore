@@ -1,0 +1,10 @@
+build/*
+typings
+public/*
+src/vite-env.d.ts
+**/__tests__/**
+src/**/*.test.*
+**/__mocks__/**
+src/setupTests.ts
+src/assets/style.css
+node_modules
