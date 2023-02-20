@@ -1,4 +1,4 @@
-import { FC, memo, MouseEventHandler } from "react";
+import { FC, memo, MouseEventHandler } from 'react';
 
 interface ButtonProps {
   onClick: MouseEventHandler;
@@ -7,3 +7,5 @@ interface ButtonProps {
 export const Button: FC<ButtonProps> = memo(({ onClick }) => {
   return <button onClick={onClick}>Click Me</button>;
 });
+
+Button.displayName = 'MemoButton';

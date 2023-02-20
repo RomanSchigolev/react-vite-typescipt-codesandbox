@@ -1,5 +1,5 @@
-import { FC, memo } from "react";
-import { User } from "models";
+import { FC, memo } from 'react';
+import { User } from 'models';
 
 interface ListItemProps {
   user: User;
@@ -8,3 +8,5 @@ interface ListItemProps {
 export const ListItem: FC<ListItemProps> = memo(({ user }) => {
   return <li>{user.username}</li>;
 });
+
+ListItem.displayName = 'MemoListItem';

@@ -1,47 +1,41 @@
-import { FC, useEffect, useState } from "react";
-import { getRemainingTimeUntilMsTimestamp } from "helpers";
-import { RemainingTime } from "models";
-
-const DEFAULT_REMAINING_TIME: RemainingTime = {
-  seconds: "00",
-  minutes: "00",
-  hours: "00",
-  days: "00",
-};
+import { FC, memo, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { calculateTimestampMs, convertTimestampMsToReadableFormat } from 'helpers';
 
 interface CountDownTimerProps {
   countDownTimestampMs: number;
 }
 
-export const CountDownTimer: FC<CountDownTimerProps> = ({
-  countDownTimestampMs,
-}) => {
-  const [remainingTime, setRemainingTime] = useState<RemainingTime>(
-    () => DEFAULT_REMAINING_TIME
-  );
+export const CountDownTimer: FC<CountDownTimerProps> = memo(({ countDownTimestampMs }) => {
+  const [timestampMs, setTimestampMs] = useState(countDownTimestampMs);
 
-  const updateRemeiningTime = (countDownTimestampMs: number) => {
-    setRemainingTime(getRemainingTimeUntilMsTimestamp(countDownTimestampMs));
-  };
+  useLayoutEffect(() => {
+    if (Date.now() > countDownTimestampMs) {
+      setTimestampMs(0);
+    }
+  }, [countDownTimestampMs]);
 
   useEffect(() => {
-    const timerId = window.setTimeout(() => {
-      updateRemeiningTime(countDownTimestampMs);
-    }, 1000);
+    let timerId: ReturnType<typeof window.setTimeout>;
 
-    return () => clearTimeout(timerId);
-  }, []);
+    if (timestampMs > 0) {
+      timerId = window.setTimeout(() => {
+        setTimestampMs(calculateTimestampMs(countDownTimestampMs));
+      }, 1000);
+    }
+
+    return () => window.clearTimeout(timerId);
+  }, [countDownTimestampMs, timestampMs]);
+
+  const convertedTimestampMsToReadableFormat = useMemo(
+    () => convertTimestampMsToReadableFormat(timestampMs),
+    [timestampMs]
+  );
 
   return (
     <div className="countDownTimer-container">
-      <span>{remainingTime.days}</span>
-      <span>days</span>
-      <span className="two-numbers">{remainingTime.hours}</span>
-      <span>hours</span>
-      <span className="two-numbers">{remainingTime.minutes}</span>
-      <span>minutes</span>
-      <span className="two-numbers">{remainingTime.seconds}</span>
-      <span>seconds</span>
+      <span>{convertedTimestampMsToReadableFormat}</span>
     </div>
   );
-};
+});
+
+CountDownTimer.displayName = 'MemoCountDownTimer';

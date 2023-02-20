@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { useInput, useFetchUsers } from "hooks";
-import { Button, List, CountDownTimer } from "components";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { useState, useEffect, useCallback } from 'react';
+import { useInput, useFetchUsers } from 'hooks';
+import { Button, List, CountDownTimer } from 'components';
+import reactLogo from './assets/react.svg';
+import './App.css';
 
 function App() {
   const users = useFetchUsers();
@@ -51,30 +51,28 @@ function App() {
       setCount((prev) => prev + 1);
     }, 1_000);
 
-    return () => clearInterval(timerId);
+    return () => window.clearInterval(timerId);
   }, [isRunning]);
 
   return (
     <div className="App">
       <div>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://reactjs.org" rel="noreferrer" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
       </div>
       <h1>React + Vite</h1>
       <h2>On CodeSandbox!</h2>
       <div className="card">
-        <CountDownTimer countDownTimestampMs={1676894400000} />
+        <CountDownTimer countDownTimestampMs={1676904900000} />
       </div>
       <div className="card">
         <div>
           <p>{count}</p>
-          <button onClick={handleRunTimer}>
-            {isRunning ? "Start" : "Stop"}
-          </button>
+          <button onClick={handleRunTimer}>{isRunning ? 'Start' : 'Stop'}</button>
         </div>
 
         <div>
