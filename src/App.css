@@ -80,3 +80,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.countDownTimer-container {
+  border: 2px solid gray;
+  padding: 30px 15px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.two-numbers {
+  width: 2ch;
+}
