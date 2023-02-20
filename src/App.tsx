@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useInput, useFetchUsers } from "hooks";
-import { Button, List } from "components";
+import { Button, List, CountDownTimer } from "components";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
@@ -66,6 +66,9 @@ function App() {
       </div>
       <h1>React + Vite</h1>
       <h2>On CodeSandbox!</h2>
+      <div className="card">
+        <CountDownTimer countDownTimestampMs={1676894400000} />
+      </div>
       <div className="card">
         <div>
           <p>{count}</p>
