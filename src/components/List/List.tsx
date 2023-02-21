@@ -1,16 +1,21 @@
 import { FC, memo, useMemo } from 'react';
 import { ListItem } from 'components';
-import { User } from 'models';
+import { useFetchUsers } from 'hooks';
 
 interface ListProps {
-  users: User[];
   query: string;
 }
 
-export const List: FC<ListProps> = memo(({ users, query }) => {
+export const List: FC<ListProps> = memo(({ query }) => {
+  const [users, isLoading] = useFetchUsers();
+
   const filteredUsers = useMemo(() => {
     return !query ? users : users.filter((user) => user.username.toLowerCase().includes(query.toLowerCase()));
   }, [users, query]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   if (filteredUsers.length === 0) {
     return <p>Empty</p>;

@@ -1,11 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useInput, useFetchUsers } from 'hooks';
+import { useInput } from 'hooks';
 import { Button, List, CountDownTimer } from 'components';
 import reactLogo from './assets/react.svg';
 import './App.css';
 
 function App() {
-  const users = useFetchUsers();
   const { query, renderInput } = useInput();
 
   const [count, setCount] = useState(0);
@@ -41,7 +40,7 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    let timerId: number | undefined;
+    let timerId: ReturnType<typeof window.setInterval>;
 
     if (isRunning) {
       return;
@@ -67,7 +66,7 @@ function App() {
       <h1>React + Vite</h1>
       <h2>On CodeSandbox!</h2>
       <div className="card">
-        <CountDownTimer countDownTimestampMs={1676904900000} />
+        <CountDownTimer countDownTimestampMs={1676965680000} />
       </div>
       <div className="card">
         <div>
@@ -83,7 +82,7 @@ function App() {
         <div>{renderInput}</div>
 
         <div>
-          <List users={users} query={query} />
+          <List query={query} />
         </div>
       </div>
     </div>
