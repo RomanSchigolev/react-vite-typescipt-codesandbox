@@ -1,14 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useInput } from 'hooks';
-import { Button, List, CountDownTimer } from 'components';
+import { Button, List, CountDownTimer, SimpleTimer } from 'components';
 import reactLogo from './assets/react.svg';
 import './App.css';
 
 function App() {
   const { query, renderInput } = useInput();
-
-  const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   // const visibleRef = useRef<boolean | null>(null);
@@ -20,38 +17,6 @@ function App() {
   const handleVisible = useCallback(() => {
     setIsVisible((prev) => !prev);
   }, []);
-
-  const handleRunTimer = () => {
-    setIsRunning((prev) => !prev);
-  };
-
-  // useEffect(() => {
-  //   const timerId = setTimeout(() => {
-  //     setCount(count + 1);
-  //   }, 1000);
-  //   return () => clearTimeout(timerId);
-  // }, [count]);
-
-  // useEffect(() => {
-  //   const timerId = setInterval(() => {
-  //     setCount((prev) => prev + 1);
-  //   }, 1000);
-  //   return () => clearInterval(timerId);
-  // }, []);
-
-  useEffect(() => {
-    let timerId: ReturnType<typeof window.setInterval>;
-
-    if (isRunning) {
-      return;
-    }
-
-    timerId = window.setInterval(() => {
-      setCount((prev) => prev + 1);
-    }, 1_000);
-
-    return () => window.clearInterval(timerId);
-  }, [isRunning]);
 
   return (
     <div className="App">
@@ -70,8 +35,7 @@ function App() {
       </div>
       <div className="card">
         <div>
-          <p>{count}</p>
-          <button onClick={handleRunTimer}>{isRunning ? 'Start' : 'Stop'}</button>
+          <SimpleTimer />
         </div>
 
         <div>
