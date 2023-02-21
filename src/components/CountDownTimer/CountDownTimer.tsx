@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
 import { calculateTimestampMs, convertTimestampMsToReadableFormat } from 'helpers';
 
 interface CountDownTimerProps {
@@ -6,13 +6,7 @@ interface CountDownTimerProps {
 }
 
 export const CountDownTimer: FC<CountDownTimerProps> = memo(({ countDownTimestampMs }) => {
-  const [timestampMs, setTimestampMs] = useState(countDownTimestampMs);
-
-  useLayoutEffect(() => {
-    if (Date.now() > countDownTimestampMs) {
-      setTimestampMs(0);
-    }
-  }, [countDownTimestampMs]);
+  const [timestampMs, setTimestampMs] = useState(() => (Date.now() > countDownTimestampMs ? 0 : countDownTimestampMs));
 
   useEffect(() => {
     let timerId: ReturnType<typeof window.setTimeout>;
@@ -20,7 +14,7 @@ export const CountDownTimer: FC<CountDownTimerProps> = memo(({ countDownTimestam
     if (timestampMs > 0) {
       timerId = window.setTimeout(() => {
         setTimestampMs(calculateTimestampMs(countDownTimestampMs));
-      }, 1000);
+      }, 1_000);
     }
 
     return () => window.clearTimeout(timerId);
