@@ -1,7 +1,7 @@
 import { Button } from 'components';
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-export const SwitchingContent = memo(() => {
+export const SwitchingContent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // const visibleRef = useRef<boolean | null>(null);
@@ -20,6 +20,4 @@ export const SwitchingContent = memo(() => {
       {isVisible && <div>some Text</div>}
     </div>
   );
-});
-
-SwitchingContent.displayName = 'MemoSwitchingContent';
+};
