@@ -1,11 +1,11 @@
-import { FC, memo, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { calculateTimestampMs, convertTimestampMsToReadableFormat } from 'helpers';
 
 interface CountDownTimerProps {
   countDownTimestampMs: number;
 }
 
-export const CountDownTimer: FC<CountDownTimerProps> = memo(({ countDownTimestampMs }) => {
+export const CountDownTimer: FC<CountDownTimerProps> = ({ countDownTimestampMs }) => {
   const [timestampMs, setTimestampMs] = useState(() => (Date.now() > countDownTimestampMs ? 0 : countDownTimestampMs));
 
   useEffect(() => {
@@ -30,6 +30,4 @@ export const CountDownTimer: FC<CountDownTimerProps> = memo(({ countDownTimestam
       <span>{convertedTimestampMsToReadableFormat}</span>
     </div>
   );
-});
-
-CountDownTimer.displayName = 'MemoCountDownTimer';
+};

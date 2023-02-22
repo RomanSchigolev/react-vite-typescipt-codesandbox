@@ -1,15 +1,12 @@
-import { useInput } from 'hooks';
-import { List, CountDownTimer, SimpleTimer, SwitchingContent } from 'components';
+import { UsersSearchForm, CountDownTimer, SimpleTimer, SwitchingContent } from 'components';
 import './App.css';
 
 function App() {
-  const { query, renderInput } = useInput();
-
   return (
     <div className="App">
       <h1>React + Vite</h1>
       <div className="card">
-        <CountDownTimer countDownTimestampMs={1676965680000} />
+        <CountDownTimer countDownTimestampMs={1677062400000} />
       </div>
       <div className="card">
         <div>
@@ -18,11 +15,7 @@ function App() {
 
         <SwitchingContent />
 
-        <div>{renderInput}</div>
-
-        <div>
-          <List query={query} />
-        </div>
+        <UsersSearchForm />
       </div>
     </div>
   );
