@@ -15,7 +15,7 @@ export const SwitchingContent = () => {
   }, []);
 
   return (
-    <div>
+    <div data-testid="switchingContent">
       <Button onClick={handleSwitching} />
       {isVisible && <div>some Text</div>}
     </div>
