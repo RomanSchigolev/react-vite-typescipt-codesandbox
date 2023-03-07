@@ -1,4 +1,4 @@
-import { UsersSearchForm, CountDownTimer, SimpleTimer, SwitchingContent } from 'components';
+import { UsersSearchForm, CountDownTimer, SimpleTimer, SwitchingContent, TagsForm } from 'components';
 import './App.css';
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <h1>React + Vite</h1>
       <div className="card">
-        <CountDownTimer countDownTimestampMs={1677062400000} />
+        <CountDownTimer countDownTimestampMs={0} />
       </div>
       <div className="card">
         <div>
@@ -14,8 +14,9 @@ function App() {
         </div>
 
         <SwitchingContent />
-
         <UsersSearchForm />
+
+        <TagsForm />
       </div>
     </div>
   );

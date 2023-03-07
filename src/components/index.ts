@@ -5,3 +5,7 @@ export * from 'components/CountDownTimer';
 export * from 'components/SimpleTimer';
 export * from 'components/SwitchingContent';
 export * from 'components/UsersSearchForm';
+export * from 'components/TagsForm';
+export * from 'components/TagList';
+export * from 'components/TagItem';
+export * from 'components/TagsInput';

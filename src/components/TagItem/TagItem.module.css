@@ -1,0 +1,42 @@
+.tagItem {
+  padding: 10px;
+  background: #5490ff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-width: 120px;
+}
+
+.tagText {
+  font-size: 20px;
+  font-weight: 600;
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tagRemoveButton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  border-radius: 0 6px 6px 0;
+  height: 100%;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.tagRemoveButton:hover {
+  background-color: #ffffff21;
+}
+
+.tagRemoveButton:focus-visible,
+.tagRemoveButton:focus {
+  background-color: #ffffff4d;
+  outline: none;
+}

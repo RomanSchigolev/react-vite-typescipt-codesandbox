@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SwitchingContent } from 'components';
 
-describe('Switching Content', () => {
+describe('SwitchingContent', () => {
   it('the component must be rendered', () => {
     render(<SwitchingContent />);
     expect(screen.getByTestId('switchingContent')).toBeInTheDocument();

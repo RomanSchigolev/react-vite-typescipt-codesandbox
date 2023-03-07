@@ -1,0 +1,17 @@
+.wrapper {
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
