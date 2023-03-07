@@ -12,7 +12,9 @@ export const TagItem: FC<TagItemProps> = memo(({ tag, onRemoveTag }) => {
 
   return (
     <li data-testid="tag" className={styles.tagItem}>
-      <span className={styles.tagText}>{tag}</span>
+      <span data-testid="tag-text" className={styles.tagText}>
+        {tag}
+      </span>
       <button data-testid="tag-remove" type="button" className={styles.tagRemoveButton} onClick={handleRemoveTag(tag)}>
         ❌
       </button>
