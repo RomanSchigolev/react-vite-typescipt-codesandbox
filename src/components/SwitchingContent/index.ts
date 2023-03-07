@@ -1,1 +1,1 @@
-export * from 'components/SwitchingContent/SwitchingContent';
+export * from './SwitchingContent';

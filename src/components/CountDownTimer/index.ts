@@ -1,1 +1,1 @@
-export * from 'components/CountDownTimer/CountDownTimer';
+export * from './CountDownTimer';

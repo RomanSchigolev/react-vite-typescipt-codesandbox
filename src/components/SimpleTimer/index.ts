@@ -1,1 +1,1 @@
-export * from 'components/SimpleTimer/SimpleTimer';
+export * from './SimpleTimer';

@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 import { TagList, TagsInput } from 'components';
-import styles from 'components/TagsInput/TagsInput.module.css';
+import styles from 'components/TagsForm/TagsForm.module.css';
 
 export const TagsForm: FC = () => {
   const [tags, setTags] = useState<string[]>(['React', 'Redux', 'MobX', 'Jest']);

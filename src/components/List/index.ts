@@ -1,1 +1,1 @@
-export * from 'components/List/List';
+export * from './List';

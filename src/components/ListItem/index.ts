@@ -1,1 +1,1 @@
-export * from 'components/ListItem/ListItem';
+export * from './ListItem';
