@@ -7,15 +7,9 @@ function App() {
       <h1>React + Vite</h1>
       <div className="card">
         <CountDownTimer countDownTimestampMs={0} />
-      </div>
-      <div className="card">
-        <div>
-          <SimpleTimer />
-        </div>
-
+        <SimpleTimer />
         <SwitchingContent />
         <UsersSearchForm />
-
         <TagsForm />
       </div>
     </div>
