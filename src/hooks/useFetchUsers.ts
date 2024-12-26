@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { fetchUsers } from 'helpers';
-import { User } from 'models';
+import { type User } from 'models';
 
 export const useFetchUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    setIsloading(true);
-    fetchUsers()
+    setIsLoading(true);
+    fetchUsers<User[]>()
       .then((data) => {
         setUsers(data);
       })
       .finally(() => {
-        setIsloading(false);
+        setIsLoading(false);
       });
   }, []);
 
