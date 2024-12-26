@@ -1,55 +1,50 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { Button } from 'components/Button';
+import { useCallback, useRef, useState } from 'react';
 
-export const SimpleTimer: FC = memo(() => {
+export const SimpleTimer = () => {
   const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof window.setInterval> | undefined>(undefined);
 
-  const handleRunTimer = () => {
-    setIsRunning((prev) => !prev);
-  };
-
-  // useEffect(() => {
-  //   const timerId = setTimeout(() => {
-  //     setCount(count + 1);
-  //   }, 1000);
-  //   return () => clearTimeout(timerId);
-  // }, [count]);
-
-  // useEffect(() => {
-  //   const timerId = setInterval(() => {
-  //     setCount((prev) => prev + 1);
-  //   }, 1000);
-  //   return () => clearInterval(timerId);
-  // }, []);
-
-  //   useEffect(() => {
-  //     const timerId = window.setInterval(() => {
-  //       setCount((prev) => prev + 1);
-  //     }, 1_000);
-
-  //     return () => window.clearInterval(timerId);
-  //   }, []);
-
-  useEffect(() => {
-    let timerId: ReturnType<typeof window.setInterval>;
-
-    if (isRunning) {
-      return;
-    }
-
-    timerId = window.setInterval(() => {
+  const handleStartTimer = useCallback(() => {
+    setIsActive(true);
+    setIsPaused(true);
+    timerRef.current = setInterval(() => {
       setCount((prev) => prev + 1);
-    }, 1_000);
+    }, 1000);
+  }, []);
 
-    return () => window.clearInterval(timerId);
-  }, [isRunning]);
+  const handlePauseTimer = useCallback(() => {
+    setIsPaused(false);
+    clearInterval(timerRef.current);
+  }, []);
+
+  const handleResumeTimer = useCallback(() => {
+    setIsPaused(true);
+    timerRef.current = setInterval(() => {
+      setCount((prev) => prev + 1);
+    }, 1000);
+  }, []);
+
+  const handleResetTimer = useCallback(() => {
+    setIsActive(false);
+    setIsPaused(false);
+    clearInterval(timerRef.current);
+    setCount(0);
+  }, []);
 
   return (
     <div>
       <p>{count}</p>
-      <button onClick={handleRunTimer}>{isRunning ? 'Start' : 'Stop'}</button>
+      {!isActive && !isPaused ? (
+        <Button onClick={handleStartTimer}>Start</Button>
+      ) : isPaused ? (
+        <Button onClick={handlePauseTimer}>Pause</Button>
+      ) : (
+        <Button onClick={handleResumeTimer}>Resume</Button>
+      )}
+      <Button onClick={handleResetTimer}>Reset</Button>
     </div>
   );
-});
-
-SimpleTimer.displayName = 'MemoSimpleTimer';
+};

@@ -1,11 +1,10 @@
-import { FC, memo, MouseEventHandler } from 'react';
+import { ButtonHTMLAttributes, FC, memo, PropsWithChildren } from 'react';
 
-interface ButtonProps {
-  onClick: MouseEventHandler;
-}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const Button: FC<ButtonProps> = memo(({ onClick }) => {
-  return <button onClick={onClick}>Click Me</button>;
+export const Button: FC<PropsWithChildren<ButtonProps>> = memo((props) => {
+  const { children, ...resProps } = props;
+  return <button {...resProps}>{children}</button>;
 });
 
 Button.displayName = 'MemoButton';
